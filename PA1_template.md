@@ -52,6 +52,7 @@ hist(byday.total$total_steps, xlab="Total steps per day", main = "Total steps pe
 ![](figure/TotalStepsPerDayNA-1.png) 
 
 
+
 **What is the average daily activity pattern?**
 
 
@@ -76,6 +77,8 @@ plot(by.activity.average$interval, by.activity.average$average_steps, type="l", 
 
 ![](figure/ActivityPattern-1.png) 
 
+
+
 **Imputing missing values**
 
 
@@ -88,6 +91,8 @@ print(paste("Total number of NA values is: ", NA_count))
 ```
 ## [1] "Total number of NA values is:  2304"
 ```
+
+
 
 **NA filling strategy **
 
@@ -110,10 +115,11 @@ by_day_total3 <- summarise(bydate.activity3 , total_steps= sum(steps))
 
 
 ```r
-hist(byday.total$total_steps, xlab="Total steps per day", main = "Total steps per day")
+hist(by_day_total3$total_steps, xlab="Total steps per day", main = "Total steps per day")
 ```
 
 ![](figure/TotalStepsPerDay-1.png) 
+
 
 
 **Mean and median total number of steps taken per day **
@@ -141,6 +147,9 @@ print(paste("Median total number of steps per day: ",meadian_steps3))
 
 There is no difference as we filled NA values with zeros. 
 
+
+
+
 **Are there differences in activity patterns between weekdays and weekends?**
 
 Following code creates a factor variable for day type and compute mean by the daytype
@@ -164,4 +173,5 @@ print(p)
 ```
 
 ![](figure/WeekDayPattern-1.png) 
+
 

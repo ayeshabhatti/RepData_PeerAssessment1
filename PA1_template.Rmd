@@ -40,6 +40,9 @@ print(paste("Median total number of steps per day is: ",  meadian_steps))
 hist(byday.total$total_steps, xlab="Total steps per day", main = "Total steps per day")
 ```
 
+```{r echo=FALSE}
+rm(bydate.activity,byday.total, mean_steps,meadian_steps)
+```
 
 **What is the average daily activity pattern?**
 
@@ -58,6 +61,10 @@ print(paste("Most active 5 minute interval is: ", most_active_interval))
 plot(by.activity.average$interval, by.activity.average$average_steps, type="l", xlab="5 min Intervals", ylab= "Average Steps", col="green" , lwd=2)
 ```
 
+```{r echo=FALSE}
+rm(which.interval ,by.activity.average, most_active_interval)
+```
+
 **Imputing missing values**
 
 ```{r}
@@ -67,6 +74,10 @@ NA_count <- sum(!complete.cases(activity_df))
 print(paste("Total number of NA values is: ", NA_count))
 ```
 
+
+```{r echo=FALSE}
+rm(NA_count)
+```
 **NA filling strategy **
 
 We need to fill the NA values with some appropriate data. We decided to do the simplest thing. Fill all NA spots with zeros. 
@@ -86,8 +97,9 @@ by_day_total3 <- summarise(bydate.activity3 , total_steps= sum(steps))
 ```
 
 ```{r TotalStepsPerDay, fig.width=8, fig.height=6, fig.path='figure/'}
-hist(byday.total$total_steps, xlab="Total steps per day", main = "Total steps per day")
+hist(by_day_total3$total_steps, xlab="Total steps per day", main = "Total steps per day")
 ```
+
 
 
 **Mean and median total number of steps taken per day **
@@ -102,6 +114,11 @@ print(paste("Median total number of steps per day: ",meadian_steps3))
 ```
 
 There is no difference as we filled NA values with zeros. 
+
+```{r echo=FALSE}
+rm(bydate.activity3, by_day_total3, mean_steps3, meadian_steps3)
+```
+
 
 **Are there differences in activity patterns between weekdays and weekends?**
 
@@ -123,3 +140,6 @@ p<-xyplot(by.interval4.total$total_steps~by.interval4.total$interval|by.interval
 print(p)
 ```
 
+```{r echo=FALSE}
+rm(by.interval4, by.interval4.total, activity_df)
+```
